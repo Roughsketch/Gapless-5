@@ -364,6 +364,8 @@ this.onerror = null;
 this.onfinishedtrack = null;
 this.onfinishedall = null;
 
+// Custom
+var volume = 100;
 
 // INTERNAL HELPERS
 
@@ -469,7 +471,20 @@ this.setGain = function (uiPos) {
 	//var power_range = Math.sin(normalized * 0.5*Math.PI);
 	gainNode.gain.value = normalized; //power_range;
 	sources[trackIndex].setGain(normalized);
+
+	this.volume = normalized * 100;
 };
+
+this.setVolume = function(vol) {
+	var percent = vol / 100;
+	var adjusted = (percent * SCRUB_RESOLUTION);
+	
+	this.setGain(adjusted);
+}
+
+this.getVolume = function() {
+	return this.volume;
+}
 
 this.scrub = function (uiPos) {
 	scrubPosition = getSoundPos(uiPos);
