@@ -174,7 +174,7 @@ function Gapless5Source(parentPlayer, inContext, inOutputNode) {
 
 	var playAudioFile = function (force) {
 		if (state == Gapless5State.Play) return;
-		if (position >= endpos) position = 0;
+		if (position >= endpos || position < 0) position = 0;
 
 		var offsetSec = position / 1000;
 		startTime = (new Date().getTime()) - position;
