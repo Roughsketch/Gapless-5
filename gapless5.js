@@ -472,7 +472,7 @@ this.setGain = function (uiPos) {
 	gainNode.gain.value = normalized; //power_range;
 	sources[trackIndex].setGain(normalized);
 
-	this.volume = normalized * 100;
+	volume = normalized * 100;
 };
 
 this.setVolume = function(vol) {
@@ -483,7 +483,7 @@ this.setVolume = function(vol) {
 }
 
 this.getVolume = function() {
-	return this.volume;
+	return volume;
 }
 
 this.scrub = function (uiPos) {
